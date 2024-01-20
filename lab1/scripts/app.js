@@ -9,7 +9,7 @@ projects.setAttribute("href", "./projects.html");
 projects.innerHTML = "Projects";
 
 var navigationBar = document.getElementById("navbar");
-var navigationItems = navbar.getElementsByTagName("li");
+var navigationItems = navigationBar.getElementsByTagName("li");
 var newNavigationItem = document.createElement("li");
 newNavigationItem.classList.add("nav-item");
 anchor = document.createElement("a");
