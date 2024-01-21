@@ -7,6 +7,9 @@
 var projects = document.getElementById("projects");
 projects.setAttribute("href", "./projects.html");
 projects.innerHTML = "Projects";
+var gridIcon = document.createElement("span");
+gridIcon.classList.add("fa", "fa-th");
+projects.prepend(gridIcon);
 
 var navigationBar = document.getElementById("navbar");
 var navigationItems = navigationBar.getElementsByTagName("li");
@@ -16,6 +19,9 @@ anchor = document.createElement("a");
 anchor.href = "#";
 anchor.innerHTML = "Human Resources";
 anchor.classList.add("nav-link");
+var personIcon = document.createElement("span");
+personIcon.classList.add("fa", "fa-user");
+anchor.prepend(personIcon);
 newNavigationItem.appendChild(anchor);
 navbar.insertBefore(newNavigationItem, navigationItems[4]);
 
