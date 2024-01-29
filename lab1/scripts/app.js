@@ -35,3 +35,36 @@ footerAnchor.innerHTML = "&copy; CopyRight 2024";
 divisionTag.appendChild(footerAnchor);
 footerNavigationBar.appendChild(divisionTag);
 document.body.appendChild(footerNavigationBar);
+
+if(document.URL.includes("index.html")) {
+  document.getElementById("indexHeader").textContent = "Home Page";
+  document.getElementById("indexWelcome").textContent = "Welcome to Fake Company's Website!";
+}
+
+if(document.URL.includes("about.html")) {
+  document.getElementById("aboutHeader").textContent = "About";
+  document.getElementById("lukeHeader").textContent = "Luke";
+  document.getElementById("lukeAbout").innerHTML = "Luke is on our web development, windows app and database design teams. He is proficient uisng C# and .NET, SQL, <br/>HTML, CSS, PHP, Javascript, Java and Python. He is always learning and broading his skillset. In his personal life he likes <br/>hanging out with his friends and family. Visit his <a href='https://www.linkedin.com/in/luke-mcmann-8254ab295/'>LinkedIn</a> to find learn more about him.";
+  document.getElementById("blakeHeader").textContent = "Blake";
+  
+}
+
+if(document.URL.includes("projects.html")) {
+  document.getElementById("projectHeader").textContent = "Favorite Projects";
+  document.getElementById("projectOneHeader").textContent = "Project #1";
+  document.getElementById("projectOne").innerHTML = "This was one of the first project's that we created as a company. This project was to create a cypher program that encypted<br/>entered text into the Al Bhed language featured in Final Fantasy X. With the development team being huge fans of FFX<br/>and the project being an intresting and fun concept caused this project to be very enjoyable for us. ";
+  document.getElementById("projectTwoHeader"). textContent = "Project #2";
+  document.getElementById("projectTwo").innerHTML = "This project was the last project we did using C# and .NET. For this project we had to create a windows form that would be<br/>used to admit students into Canadian Colleges. The program stores admitted students in a .JSON file that can be used<br/>see admitted students information.";
+  document.getElementById("projectThreeHeader").textContent = "Project #3";
+
+}
+
+if(document.URL.includes("services.html")) {
+  document.getElementById("servicesHeader").textContent = "Services";
+  document.getElementById("serviceOneHeader").innerHTML = "<br/>Website Development";
+  document.getElementById("serviceOne").innerHTML = "Here at Fake company we create custom website for our customers. These websites are built using HTML, CSS and PHP or Javascript.<br/>We also provide service to existing websites written in PHP and or Javascript. Our web development team has lots of experience<br/>creating amazing websites that serve our customers business needs. Visit our contact us page to request our services.";
+  document.getElementById("serviceHeaderTwo").innerHTML = "<br/>Windows Apps";
+  document.getElementById("serviceTwo").innerHTML = "Here at Fake company we offer windows form app creation. Using C# and .NET we build our customers dream applications.<br/>Our windows app development team as lots of experience building impressive and beautiful apps that meet our customers needs. <br/>Visit our contact us page to request our services.";
+  document.getElementById("serviceThreeHeader").innerHTML = "<br/>Database Services";
+  document.getElementById("serviceThree").innerHTML = "Here at Fake company we provide database services. Specializing in SQL we can create you a database, design you a database or modify <br/>and improve your existing database. Our team has plenty of experience desgining and implementing databases. Please visit our contact<br/>us page to request our services. ";
+}
