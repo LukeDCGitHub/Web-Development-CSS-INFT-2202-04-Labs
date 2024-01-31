@@ -54,8 +54,9 @@ if(document.URL.includes("projects.html")) {
   document.getElementById("projectOneHeader").textContent = "Project #1";
   document.getElementById("projectOne").innerHTML = "This was one of the first project's that we created as a company. This project was to create a cypher program that encypted<br/>entered text into the Al Bhed language featured in Final Fantasy X. With the development team being huge fans of FFX<br/>and the project being an intresting and fun concept caused this project to be very enjoyable for us. ";
   document.getElementById("projectTwoHeader"). textContent = "Project #2";
-  document.getElementById("projectTwo").innerHTML = "This project was the last project we did using C# and .NET. For this project we had to create a windows form that would be<br/>used to admit students into Canadian Colleges. The program stores admitted students in a .JSON file that can be used<br/>see admitted students information.";
+  document.getElementById("projectTwo").innerHTML = "This project was the last project we did using C# and .NET. For this project we had to create a windows form that would be<br/>used to admit students into Canadian Colleges. The program stores admitted students in a .JSON file that can be used<br/>to see admitted students information.";
   document.getElementById("projectThreeHeader").textContent = "Project #3";
+  document.getElementById("projectThree").innerHTML = "This was one of the more recent projects that our company produced. This project is a Tic-Tac-Toe board, built with C#.<br/> This ground breaking game allows players to customize their names and symbols like nothing you've seen before.<br/>This game also keeps a record of the scores for each game to determine the overall winner.";
 
 }
 
