@@ -44,8 +44,9 @@ if(document.URL.includes("index.html")) {
 if(document.URL.includes("about.html")) {
   document.getElementById("aboutHeader").textContent = "About";
   document.getElementById("lukeHeader").textContent = "Luke";
-  document.getElementById("lukeAbout").innerHTML = "Luke is on our web development, windows app and database design teams. He is proficient uisng C# and .NET, SQL, <br/>HTML, CSS, PHP, Javascript, Java and Python. He is always learning and broading his skillset. In his personal life he likes <br/>hanging out with his friends and family. Visit his <a href='https://www.linkedin.com/in/luke-mcmann-8254ab295/'>LinkedIn</a> to find learn more about him.";
+  document.getElementById("lukeAbout").innerHTML = "Luke is on our web development, windows app and database design teams. He is proficient uisng C# and .NET, SQL, <br/>HTML, CSS, PHP, Javascript, Java and Python. He is always learning and broading his skillset. In his personal life he likes <br/>hanging out with his friends and family. Visit his <a href='https://www.linkedin.com/in/luke-mcmann-8254ab295/'>LinkedIn</a> to learn more about him.";
   document.getElementById("blakeHeader").textContent = "Blake";
+  document.getElementById("blakeAbout").innerHTML = "Blake is our project manager. He's good at making our jobs difficult. He knows very little about programming so<br/> we're not sure why he works for us. Infact he doesn't know much of anything really. He does bring us tootsie rolls on tuesdays,<br/> so I guess he's useful for something. Here's his <a href='https://www.linkedin.com/in/blakemunro/'>LinkedIn</a>. It might show something he's good at.";
   
 }
 
