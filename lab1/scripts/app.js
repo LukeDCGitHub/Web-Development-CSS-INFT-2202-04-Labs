@@ -1,9 +1,10 @@
 /*
   Names: Luke McMann, Blake Munro
   Student ID: 100893644, 100883548
-  Date finished:
+  Date finished: 2024-02-01
 */
 
+// Rename products to projects
 var projects = document.getElementById("projects");
 projects.setAttribute("href", "./projects.html");
 projects.innerHTML = "Projects";
@@ -11,6 +12,7 @@ var gridIcon = document.createElement("span");
 gridIcon.classList.add("fa", "fa-th");
 projects.prepend(gridIcon);
 
+// Add human resources to navbar
 var navigationBar = document.getElementById("navbar");
 var navigationItems = navigationBar.getElementsByTagName("li");
 var newNavigationItem = document.createElement("li");
@@ -25,6 +27,7 @@ anchor.prepend(personIcon);
 newNavigationItem.appendChild(anchor);
 navbar.insertBefore(newNavigationItem, navigationItems[4]);
 
+// Add copyright to page footer
 var footerNavigationBar = document.createElement("nav");
 footerNavigationBar.classList.add("navbar", "fixed-bottom", "navbar-light", "bg-light");
 var divisionTag = document.createElement("div");
@@ -36,11 +39,13 @@ divisionTag.appendChild(footerAnchor);
 footerNavigationBar.appendChild(divisionTag);
 document.body.appendChild(footerNavigationBar);
 
+// Add content to index.html
 if(document.URL.includes("index.html")) {
   document.getElementById("indexHeader").textContent = "Home Page";
   document.getElementById("indexWelcome").textContent = "Welcome to Fake Company's Website!";
 }
 
+// Add content to about.html
 if(document.URL.includes("about.html")) {
   document.getElementById("aboutHeader").textContent = "About";
   document.getElementById("lukeHeader").textContent = "Luke";
@@ -50,6 +55,7 @@ if(document.URL.includes("about.html")) {
   
 }
 
+// Add content to projects.html
 if(document.URL.includes("projects.html")) {
   document.getElementById("projectHeader").textContent = "Favorite Projects";
   document.getElementById("projectOneHeader").textContent = "Project #1";
@@ -61,6 +67,7 @@ if(document.URL.includes("projects.html")) {
 
 }
 
+// Add content to services.html
 if(document.URL.includes("services.html")) {
   document.getElementById("servicesHeader").textContent = "Services";
   document.getElementById("serviceOneHeader").innerHTML = "<br/>Website Development";
@@ -71,10 +78,15 @@ if(document.URL.includes("services.html")) {
   document.getElementById("serviceThree").innerHTML = "Here at Fake company we provide database services. Specializing in SQL we can create you a database, design you a database or modify <br/>and improve your existing database. Our team has plenty of experience desgining and implementing databases. Please visit our contact<br/>us page to request our services. ";
 }
 
+// Add content to contact.html
 if(document.URL.includes("contact.html")) {
   document.getElementById("contactHeader").textContent = "Sign Up";
 }
 
+/*
+Function submitForm() gets form element values by id and stores them in local variables,
+displays user infromation in console, and redirects the user to the home page.
+*/
 function submitForm() {
   // Get user information
   var name = document.getElementById('name').value;
