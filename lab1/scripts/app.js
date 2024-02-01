@@ -91,7 +91,7 @@ if(document.URL.includes("services.html")) {
 // Check if on the contact.html page
 if(document.URL.includes("contact.html")) {
   // Add content to contact.html
-  document.getElementById("contactHeader").textContent = "Sign Up";
+  document.getElementById("contactHeader").textContent = "Contact Form";
 }
 
 /**
