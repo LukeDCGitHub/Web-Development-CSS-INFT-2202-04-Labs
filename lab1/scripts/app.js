@@ -70,3 +70,22 @@ if(document.URL.includes("services.html")) {
   document.getElementById("serviceThreeHeader").innerHTML = "<br/>Database Services";
   document.getElementById("serviceThree").innerHTML = "Here at Fake company we provide database services. Specializing in SQL we can create you a database, design you a database or modify <br/>and improve your existing database. Our team has plenty of experience desgining and implementing databases. Please visit our contact<br/>us page to request our services. ";
 }
+
+function submitForm() {
+  // Get user information
+  var name = document.getElementById('name').value;
+  var contactNumber = document.getElementById('contactNumber').value;
+  var email = document.getElementById('email').value;
+  var message = document.getElementById('message').value;
+
+  // Output user information to console
+  console.log('Name:', name);
+  console.log('Contact Number:', contactNumber);
+  console.log('Email Address:', email);
+  console.log('Message:', message);
+
+  // Start timer to redirect after 3 seconds
+  setTimeout(function () {
+    window.location.href = 'index.html';
+  }, 3000);
+}
