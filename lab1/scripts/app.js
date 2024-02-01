@@ -71,6 +71,10 @@ if(document.URL.includes("services.html")) {
   document.getElementById("serviceThree").innerHTML = "Here at Fake company we provide database services. Specializing in SQL we can create you a database, design you a database or modify <br/>and improve your existing database. Our team has plenty of experience desgining and implementing databases. Please visit our contact<br/>us page to request our services. ";
 }
 
+if(document.URL.includes("contact.html")) {
+  document.getElementById("contactHeader").textContent = "Sign Up";
+}
+
 function submitForm() {
   // Get user information
   var name = document.getElementById('name').value;
