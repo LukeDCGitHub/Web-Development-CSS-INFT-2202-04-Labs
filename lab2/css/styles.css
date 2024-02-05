@@ -1,0 +1,30 @@
+/*
+  Names: Luke McMann, Blake Munro
+  Student ID: 100893644, 100883548
+  Date finished: 2024-02-01
+*/
+
+img {
+  width: 800px;
+  height: 500px;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: limegreen;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
