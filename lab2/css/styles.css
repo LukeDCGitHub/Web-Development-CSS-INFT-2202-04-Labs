@@ -21,7 +21,7 @@ input, textarea {
   box-sizing: border-box;
 }
 
-button {
+.button {
   background-color: limegreen;
   color: white;
   padding: 10px 15px;
