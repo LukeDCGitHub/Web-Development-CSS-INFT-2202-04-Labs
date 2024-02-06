@@ -127,10 +127,18 @@ function submitLogin() {
   let username = $("#loginUsername").val();
   let password = $("#loginPassword").val();
 
+  // Check if username is already in navbar
+  if($("#usernameNavigation").length != 0) {
+    // Remove the old username form navbar
+    $("#usernameNavigation").remove();
+    // Add new username to navbar
+    $("#contactUsNavigation").after(`<li id=\"usernameNavigation\" class=\"nav-item\"><a class=\"nav-link\" href=\"#\">${username}</a></li>`);
+  }
+
   // Check if the length of the entered data is greater than 0
-  if(username.length > 0 && password.length > 0) {
+  else if(username.length > 0 && password.length > 0) {
     // Add username to navbar
-    $("#contactUsNavigation").after(`<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">${username}</a></li>`)
+    $("#contactUsNavigation").after(`<li id=\"usernameNavigation\" class=\"nav-item\"><a class=\"nav-link\" href=\"#\">${username}</a></li>`);
   }  
 }
 
