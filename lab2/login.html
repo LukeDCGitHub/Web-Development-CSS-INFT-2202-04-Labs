@@ -41,7 +41,7 @@
                   <li class="nav-item">
                   <a class="nav-link" href="./about.html"><span class="fa fa-info-circle"></span>About Us</a>
                   </li>
-                  <li class="nav-item">
+                  <li id="contactUsNavigation" class="nav-item">
                   <a class="nav-link" href="./contact.html"><span class="fa fa-phone"></span>Contact Us</a>
                   </li>
                   <li class="nav-item">
@@ -59,15 +59,15 @@
     <h1>Login</h1>
     <div class="row">
       <div class="col">
-        <input class="form-control" type="text" id="username" name="username" placeholder="Enter your username">
+        <input id="loginUsername" class="form-control" type="text" id="username" name="username" placeholder="Enter your username">
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <input class="form-control" type="password" id="passwordLogin" name="passwordLogin" placeholder="Enter your password">
+        <input id="loginPassword" class="form-control" type="password" id="passwordLogin" name="passwordLogin" placeholder="Enter your password">
       </div>
     </div>
-        <button type="button" class="btn btn-primary btn pull-right">Login</button>
+        <button type="button" class="btn btn-primary btn pull-right" onclick="submitLogin()">Login</button>
   </form> 
   <br/><br/>
   <div class="h-100 d-flex align-items-center justify-content-center">

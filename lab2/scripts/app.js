@@ -118,3 +118,19 @@ function submitForm() {
     window.location.href = 'index.html';
   }, 3000);
 }
+
+/**
+ * When login form is submitted and username and password are not blank add username to navbar
+ */
+function submitLogin() {
+  // Get user enter information
+  let username = $("#loginUsername").val();
+  let password = $("#loginPassword").val();
+
+  // Check if the length of the entered data is greater than 0
+  if(username.length > 0 && password.length > 0) {
+    // Add username to navbar
+    $("#contactUsNavigation").after(`<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">${username}</a></li>`)
+  }  
+}
+
