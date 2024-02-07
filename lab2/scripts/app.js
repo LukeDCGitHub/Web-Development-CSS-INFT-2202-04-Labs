@@ -145,7 +145,7 @@ function submitLogin() {
 // Check if on the register.html page
 if(document.URL.includes("register.html")) {
   // Add a div to the end of the file that will hold error messages.
-  $("#lastDivRegister").after("<div class=\"h-100 d-flex align-items-center justify-content-center\" id=\"errorMessage\"></div>");
+  $("#lastDivRegister").after("<div class=\"alert alert-danger\" id=\"errorMessage\"></div>");
   // Hide the newly created div
   $("#errorMessage").hide();
 }
