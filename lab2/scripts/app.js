@@ -4,6 +4,39 @@
   Date finished: 2024-02-01
 */
 
+// Create minimumLength constant for user inputs
+const minimumLength = 2;
+
+class User {
+  constructor(firstName, lastName, username, email, password) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
+
+  get firstName() {
+    return this.firstName;
+  }
+
+  get lastName() {
+    return this.lastName;
+  }
+
+  get username() {
+    return this.username;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  get password() {
+    return this.password;
+  }
+}
+
 // Update projects nav item
 var projects = document.getElementById("projects");
 // Change link and name of nav item
@@ -148,5 +181,10 @@ if(document.URL.includes("register.html")) {
   $("#lastDivRegister").after("<div class=\"alert alert-danger\" id=\"errorMessage\"></div>");
   // Hide the newly created div
   $("#errorMessage").hide();
+}
+
+
+function submitRegister() {
+  
 }
 
