@@ -7,7 +7,19 @@
 // Create minimumLength constant for user inputs
 const minimumLength = 2;
 
+/**
+ * Create User class this will hold user information and represent a users details
+ */
 class User {
+
+  /**
+   * Constructor that sets all User proterties
+   * @param {*} firstName 
+   * @param {*} lastName 
+   * @param {*} username 
+   * @param {*} email 
+   * @param {*} password 
+   */
   constructor(firstName, lastName, username, email, password) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -16,25 +28,16 @@ class User {
     this.password = password;
   }
 
-  get firstName() {
-    return this.firstName;
-  }
-
-  get lastName() {
-    return this.lastName;
-  }
-
-  get username() {
-    return this.username;
-  }
-
-  get email() {
-    return this.email;
-  }
-
-  get password() {
-    return this.password;
-  }
+  /**
+   * Display the user's information
+   */
+  displayUser() {
+    console.log(`First Name: ${this.firstName}`);
+    console.log(`Last Name: ${this.lastName}`);
+    console.log(`Username: ${this.username}`);
+    console.log(`Email: ${this.email}`);
+    console.log(`Password ${this.password}`);
+  };
 }
 
 // Update projects nav item
@@ -177,14 +180,91 @@ function submitLogin() {
 
 // Check if on the register.html page
 if(document.URL.includes("register.html")) {
-  // Add a div to the end of the file that will hold error messages.
+  // Add a div to the end of the file that will hold error messages
   $("#lastDivRegister").after("<div class=\"alert alert-danger\" id=\"errorMessage\"></div>");
   // Hide the newly created div
   $("#errorMessage").hide();
 }
 
+/**
+ * When the submit button on the register for is clicked excute statements
+ */
+$("#registerForm").submit((e) => {
+  // Get the elements with the is-valid class
+  let validInputs = document.getElementsByClassName("is-valid");
+  // If the number of inputs with the is-valid class is 5 then the form is valid
+  if(validInputs.length == 5) {
+    // Create new user using the data entered by the user
+    let user = new User($("#firstName").val(), $("#lastName").val(), $("#username").val(), $("#email").val(), $("#password").val());
+    // Display the user information to the console
+    user.displayUser();
+    // Clear the form
+    clearForm();
+  }
+  // If there are not 5 inputs with the is-valid class dont't submit the form
+  else {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
 
-function submitRegister() {
+/**
+ * Call when input is invalid, show error message and add "is-invalid" class to the input 
+ * @param {*} formInputId 
+ * @param {*} errorMessage 
+ */
+function invalidInput(formInputId, errorMessage) {
+  // Unhide hidden div and display error message to the user
+  $("#errorMessage").show();
+  $("#errorMessage").html(errorMessage);
   
+  $(formInputId).removeClass("is-valid");
+  $(formInputId).addClass("is-invalid");
+}
+
+/**
+ * Call when an input is valid change class to "is-valid" and hide any error messages
+ * @param {*} formInputId 
+ */
+function validInput(formInputId) {
+  $("#errorMessage").hide();
+  $(formInputId).removeClass("is-invalid");
+  $(formInputId).addClass("is-valid");
+}
+
+/**
+ * Listen for the event that the firstName input is unfocused and display an error message or accept the input based on whether it's valid or not
+ */
+$("#firstName").blur((e) => {
+  // Check if input is a valid length
+  if($("#firstName").val().length < minimumLength) {
+    invalidInput("#firstName", "<center>First name must be greater than 2 characters</center>");
+  }
+  // Else the lenght is valid
+  else {
+    validInput("#firstName");
+  }
+});
+
+/**
+ * Listen for the event that the lastName input is unfocused and display an error message or accept the input based on whether it's valid or not
+ */
+$("#lastName").blur((e) => {
+  // Check if input is a valid length
+  if($("#lastName").val().length < minimumLength) {
+    invalidInput("#lastName", "<center>Last name must be greater than 2 characters</center>");
+  }
+  // Else the lenght is valid
+  else {
+    validInput("#lastName");
+  }
+});
+
+/**
+ * Clear the form by setting it to it's original state and hiding error messages
+ */
+function clearForm() {
+  $("#registerForm")[0].reset();
+  $("#errorMessage").hide();
 }
 
