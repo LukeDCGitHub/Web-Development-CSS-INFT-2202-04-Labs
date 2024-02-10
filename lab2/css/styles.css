@@ -29,6 +29,6 @@ input, textarea {
   cursor: pointer;
 }
 
-input {
+.input {
   width: 80px;
 }

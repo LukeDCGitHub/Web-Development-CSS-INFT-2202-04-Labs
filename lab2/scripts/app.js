@@ -155,6 +155,12 @@ function submitForm() {
   }, 3000);
 }
 
+// Check if a user is logged in
+if(sessionStorage.getItem("username") != null) {
+  // Add username to navbar
+  $("#contactUsNavigation").after(`<li id=\"usernameNavigation\" class=\"nav-item\"><a class=\"nav-link\" href=\"#\">${sessionStorage.getItem("username")}</a></li>`);
+}
+
 /**
  * When login form is submitted and username and password are not blank add username to navbar
  */
@@ -167,14 +173,14 @@ function submitLogin() {
   if($("#usernameNavigation").length != 0) {
     // Remove the old username form navbar
     $("#usernameNavigation").remove();
-    // Add new username to navbar
-    $("#contactUsNavigation").after(`<li id=\"usernameNavigation\" class=\"nav-item\"><a class=\"nav-link\" href=\"#\">${username}</a></li>`);
+    // Create session variable storing the users username
+    sessionStorage.setItem("username", username);
   }
 
   // Check if the length of the entered data is greater than 0
   else if(username.length > 0 && password.length > 0) {
-    // Add username to navbar
-    $("#contactUsNavigation").after(`<li id=\"usernameNavigation\" class=\"nav-item\"><a class=\"nav-link\" href=\"#\">${username}</a></li>`);
+    // Create session variable storing the users username
+    sessionStorage.setItem("username", username);
   }  
 }
 
