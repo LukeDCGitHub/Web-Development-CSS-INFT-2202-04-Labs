@@ -199,24 +199,32 @@ if(document.URL.includes("register.html")) {
  * When the submit button on the register form is clicked excute statements
  */
 $("#registerForm").submit((e) => {
+  e.preventDefault();
+  e.stopPropagation();
   
   // Get the elements with the is-valid class
   let validInputs = document.getElementsByClassName("is-valid");
+
   // If the number of inputs with the is-valid class is 5 then the form is valid
   if(validInputs.length == 5) {
+    
     // Hide any error messages
     $("#errorMessage").hide();
+    
     // Create new user using the data entered by the user
     let user = new User($("#firstName").val(), $("#lastName").val(), $("#username").val(), $("#email").val(), $("#password").val());
+    
     // Display the user information to the console
     user.displayUser();
+
     // Clear the form
     clearForm();
   }
-  // If there are not 5 inputs with the is-valid class, prevent form from submitting
+  // If there are not 5 inputs with the is-valid class, display error message
   else {
-    e.preventDefault();
-    e.stopPropagation();
+     // Show an error message
+     $("#errorMessage").show();
+     $("#errorMessage").html("Ooops! Something Went Wrong...");
   }
 });
 
