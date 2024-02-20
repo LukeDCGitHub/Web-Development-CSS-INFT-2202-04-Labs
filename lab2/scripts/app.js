@@ -274,6 +274,7 @@ function clearForm() {
   $("#errorMessage").hide();
 }
 
+// Wait until page is fully loaded
 $(document).ready(function() {
   // Function to validate email
   function validateEmail(email) {
@@ -288,8 +289,48 @@ $(document).ready(function() {
         invalidInput("#email", "Email must be at least 8 characters long and contain an @ symbol.");
     } else {
         // Hide error message if email is valid
-        $("#errorMessage").hide();
-        $("#email").removeClass("is-invalid").addClass("is-valid");
+        validInput("#email")
     }
+  });
+
+  
+    // Function to validate password match
+    function validatePasswordMatch(password, confirmPassword) {
+      return password === confirmPassword;
+  }
+
+  // Event listener for input change in password field
+  $("#password").on("input", function() {
+      var password = $(this).val();
+      var confirmPassword = $("#confirmPassword").val();
+
+      if (password.length < 6) {
+          invalidInput("#password", "Password must be at least 6 characters long.");
+      } else {
+          $("#password").removeClass("is-invalid").addClass("is-valid");
+          if (confirmPassword !== "") {
+              if (validatePasswordMatch(password, confirmPassword)) {
+                  validInput("#password")
+                  validInput("#confirmPassword")
+
+              } else {
+                  invalidInput("#confirmPassword", "Passwords do not match.");
+              }
+          }
+      }
+  });
+
+  // Event listener for input change in confirm password field
+  $("#confirmPassword").on("input", function() {
+      var password = $("#password").val();
+      var confirmPassword = $(this).val();
+
+      if (confirmPassword.length < 6) {
+          invalidInput("#confirmPassword", "Password must be at least 6 characters long.");
+      } else if (!validatePasswordMatch(password, confirmPassword)) {
+          invalidInput("#confirmPassword", "Passwords do not match.");
+      } else {
+          validInput("#confirmPassword")
+      }
   });
 });
