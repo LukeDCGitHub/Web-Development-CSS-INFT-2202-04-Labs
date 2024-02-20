@@ -199,9 +199,7 @@ if(document.URL.includes("register.html")) {
  * When the submit button on the register form is clicked excute statements
  */
 $("#registerForm").submit((e) => {
-  e.preventDefault();
-  e.stopPropagation();
-
+  
   // Get the elements with the is-valid class
   let validInputs = document.getElementsByClassName("is-valid");
   // If the number of inputs with the is-valid class is 5 then the form is valid
@@ -215,11 +213,10 @@ $("#registerForm").submit((e) => {
     // Clear the form
     clearForm();
   }
-  // If there are not 5 inputs with the is-valid class, display error messsage
+  // If there are not 5 inputs with the is-valid class, prevent form from submitting
   else {
-    // Show an error message
-    $("#errorMessage").show();
-    $("#errorMessage").html("Ooops! Something Went Wrong...");
+    e.preventDefault();
+    e.stopPropagation();
   }
 });
 
@@ -287,15 +284,26 @@ function clearForm() {
 $(document).ready(function() {
   // Function to validate email
   function validateEmail(email) {
-    // Chech if email is at least 8 characters long and contains an @ symbol
-    return email.length >= 8 && email.includes('@');
+    // Get email text box
+    let emailTextBox = document.getElementById("email");
+    // Regex taken from https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript author: community wiki 
+    var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  // Check if the email address is value if it is return true
+	if(!!email && typeof email === 'string' && email.match(regex)) {
+      emailTextBox.classList.add("is-valid");
+      return true;
   }
+  // If the email is not value return false
+  else {
+    return false;
+  }
+}
 
   // Event listener for input change in email field
   $("#email").on("input", function() {
     var email = $(this).val();
     if (!validateEmail(email)) {
-        invalidInput("#email", "Email must be at least 8 characters long and contain an @ symbol.");
+        invalidInput("#email", "<center>Email must be at least 8 characters long and contain an @ symbol.</center>");
     } else {
         // Hide error message if email is valid
         validInput("#email")
@@ -314,7 +322,7 @@ $(document).ready(function() {
       var confirmPassword = $("#confirmPassword").val();
 
       if (password.length < 6) {
-          invalidInput("#password", "Password must be at least 6 characters long.");
+          invalidInput("#password", "<center>Password must be at least 6 characters long.</center>");
       } else {
           $("#password").removeClass("is-invalid").addClass("is-valid");
           if (confirmPassword !== "") {
@@ -323,7 +331,7 @@ $(document).ready(function() {
                   validInput("#confirmPassword")
 
               } else {
-                  invalidInput("#confirmPassword", "Passwords do not match.");
+                  invalidInput("#confirmPassword", "<center>Passwords do not match.</center>");
               }
           }
       }
@@ -335,9 +343,9 @@ $(document).ready(function() {
       var confirmPassword = $(this).val();
 
       if (confirmPassword.length < 6) {
-          invalidInput("#confirmPassword", "Password must be at least 6 characters long.");
+          invalidInput("#confirmPassword", "<center>Password must be at least 6 characters long.</center>");
       } else if (!validatePasswordMatch(password, confirmPassword)) {
-          invalidInput("#confirmPassword", "Passwords do not match.");
+          invalidInput("#confirmPassword", "<center>Passwords do not match.</center>");
       } else {
           validInput("#confirmPassword")
       }
