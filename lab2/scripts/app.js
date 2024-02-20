@@ -1,7 +1,7 @@
 /*
   Names: Luke McMann, Blake Munro
   Student ID: 100893644, 100883548
-  Date finished: 2024-02-01
+  Date finished: 2024-02-20
 */
 
 // Create minimumLength constant for user inputs
@@ -193,7 +193,7 @@ if(document.URL.includes("register.html")) {
 }
 
 /**
- * When the submit button on the register for is clicked excute statements
+ * When the submit button on the register form is clicked excute statements
  */
 $("#registerForm").submit((e) => {
   // Get the elements with the is-valid class
@@ -274,3 +274,31 @@ function clearForm() {
   $("#errorMessage").hide();
 }
 
+$(document).ready(function() {
+  // Function to validate email
+  function validateEmail(email) {
+      var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+  }
+
+      // Function to display error message and mark input as invalid
+      function invalidInput(formInputId, errorMessage) {
+        // Unhide hidden div and display error message to the user
+        $("#errorMessage").show();
+        $("#errorMessage").html(errorMessage);
+        
+        $(formInputId).removeClass("is-valid");
+        $(formInputId).addClass("is-invalid");
+    }
+
+  // Event listener for input change in email field
+  $("#email").on("input", function() {
+    var email = $(this).val();
+    if (email.length < 8 || !validateEmail(email)) {
+        invalidInput("#email", "Email must be at least 8 characters long and contain a valid email address.");
+    } else {
+        $("#errorMessage").hide(); // Hide error message if email is valid
+        $("#email").removeClass("is-invalid").addClass("is-valid");
+    }
+  });
+});
