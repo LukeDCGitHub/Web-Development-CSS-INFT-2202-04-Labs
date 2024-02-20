@@ -266,7 +266,7 @@ $("#lastName").blur((e) => {
   if($("#lastName").val().length < minimumLength) {
     invalidInput("#lastName", "<center>Last name must be greater than 2 characters</center>");
   }
-  // Else the lenght is valid
+  // Else the length is valid
   else {
     validInput("#lastName");
   }
@@ -282,12 +282,16 @@ function clearForm() {
 
 // Wait until page is fully loaded
 $(document).ready(function() {
+
   // Function to validate email
   function validateEmail(email) {
+
     // Get email text box
     let emailTextBox = document.getElementById("email");
+
     // Regex taken from https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript author: community wiki 
     var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  
   // Check if the email address is value if it is return true
 	if(!!email && typeof email === 'string' && email.match(regex)) {
       emailTextBox.classList.add("is-valid");
@@ -301,9 +305,17 @@ $(document).ready(function() {
 
   // Event listener for input change in email field
   $("#email").on("input", function() {
+
+    // Get the value of the email
     var email = $(this).val();
+
+    // If email is not valid
     if (!validateEmail(email)) {
+
+        // Set email to invalid and display error message
         invalidInput("#email", "<center>Email must be at least 8 characters long and contain an @ symbol.</center>");
+
+      // If email data is valid
     } else {
         // Hide error message if email is valid
         validInput("#email")
@@ -313,24 +325,42 @@ $(document).ready(function() {
   
     // Function to validate password match
     function validatePasswordMatch(password, confirmPassword) {
+
+      // Return true of false if password values are equal
       return password === confirmPassword;
   }
 
   // Event listener for input change in password field
   $("#password").on("input", function() {
+    
+      // Get values for password and confirm password
       var password = $(this).val();
       var confirmPassword = $("#confirmPassword").val();
 
+      // If password lenght is invalid
       if (password.length < 6) {
+
+          // Set password to invalid and display error message
           invalidInput("#password", "<center>Password must be at least 6 characters long.</center>");
+
+          // Password is valid length
       } else {
-          $("#password").removeClass("is-invalid").addClass("is-valid");
+          // Set password to valid
+          validInput("#password")
+
+          // If confirm password is not empty
           if (confirmPassword !== "") {
+
+              // If passwords match
               if (validatePasswordMatch(password, confirmPassword)) {
+
+                  // Set password and confirm password to valid
                   validInput("#password")
                   validInput("#confirmPassword")
-
+                  
+                // Passwords do not match
               } else {
+                  // Set confirm password to invalid and display error message
                   invalidInput("#confirmPassword", "<center>Passwords do not match.</center>");
               }
           }
@@ -339,14 +369,26 @@ $(document).ready(function() {
 
   // Event listener for input change in confirm password field
   $("#confirmPassword").on("input", function() {
+
+      // Get value for password and confirm password
       var password = $("#password").val();
       var confirmPassword = $(this).val();
 
+      // If the confirm password length is valid
       if (confirmPassword.length < 6) {
+
+          // Set confirm password to invalid and display error message
           invalidInput("#confirmPassword", "<center>Password must be at least 6 characters long.</center>");
+
+        // If the passwords do not match
       } else if (!validatePasswordMatch(password, confirmPassword)) {
+
+          // Set confirm password to invalid and display error message
           invalidInput("#confirmPassword", "<center>Passwords do not match.</center>");
+
+        // If confirm password data is valid
       } else {
+          // Set confirm password to valid
           validInput("#confirmPassword")
       }
   });
