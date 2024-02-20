@@ -277,15 +277,15 @@ function clearForm() {
 $(document).ready(function() {
   // Function to validate email
   function validateEmail(email) {
-      var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return regex.test(email);
+    // Chech if email is at least 8 characters long and contains an @ symbol
+    return email.length >= 8 && email.includes('@');
   }
 
   // Event listener for input change in email field
   $("#email").on("input", function() {
     var email = $(this).val();
-    if (email.length < 8 || !validateEmail(email)) {
-        invalidInput("#email", "Email must be at least 8 characters long and contain a valid email address.");
+    if (!validateEmail(email)) {
+        invalidInput("#email", "Email must be at least 8 characters long and contain an @ symbol.");
     } else {
         // Hide error message if email is valid
         $("#errorMessage").hide();
