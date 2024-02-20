@@ -155,6 +155,9 @@ function submitForm() {
   }, 3000);
 }
 
+
+/*----- Lab 2 -----*/
+
 // Check if a user is logged in
 if(sessionStorage.getItem("username") != null) {
   // Add username to navbar
@@ -196,10 +199,15 @@ if(document.URL.includes("register.html")) {
  * When the submit button on the register form is clicked excute statements
  */
 $("#registerForm").submit((e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
   // Get the elements with the is-valid class
   let validInputs = document.getElementsByClassName("is-valid");
   // If the number of inputs with the is-valid class is 5 then the form is valid
   if(validInputs.length == 5) {
+    // Hide any error messages
+    $("#errorMessage").hide();
     // Create new user using the data entered by the user
     let user = new User($("#firstName").val(), $("#lastName").val(), $("#username").val(), $("#email").val(), $("#password").val());
     // Display the user information to the console
@@ -207,10 +215,11 @@ $("#registerForm").submit((e) => {
     // Clear the form
     clearForm();
   }
-  // If there are not 5 inputs with the is-valid class dont't submit the form
+  // If there are not 5 inputs with the is-valid class, display error messsage
   else {
-    e.preventDefault();
-    e.stopPropagation();
+    // Show an error message
+    $("#errorMessage").show();
+    $("#errorMessage").html("Ooops! Something Went Wrong...");
   }
 });
 
@@ -246,7 +255,7 @@ $("#firstName").blur((e) => {
   if($("#firstName").val().length < minimumLength) {
     invalidInput("#firstName", "<center>First name must be greater than 2 characters</center>");
   }
-  // Else the lenght is valid
+  // Else the length is valid
   else {
     validInput("#firstName");
   }
