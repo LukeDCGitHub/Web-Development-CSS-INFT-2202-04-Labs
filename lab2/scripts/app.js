@@ -281,23 +281,14 @@ $(document).ready(function() {
       return regex.test(email);
   }
 
-      // Function to display error message and mark input as invalid
-      function invalidInput(formInputId, errorMessage) {
-        // Unhide hidden div and display error message to the user
-        $("#errorMessage").show();
-        $("#errorMessage").html(errorMessage);
-        
-        $(formInputId).removeClass("is-valid");
-        $(formInputId).addClass("is-invalid");
-    }
-
   // Event listener for input change in email field
   $("#email").on("input", function() {
     var email = $(this).val();
     if (email.length < 8 || !validateEmail(email)) {
         invalidInput("#email", "Email must be at least 8 characters long and contain a valid email address.");
     } else {
-        $("#errorMessage").hide(); // Hide error message if email is valid
+        // Hide error message if email is valid
+        $("#errorMessage").hide();
         $("#email").removeClass("is-invalid").addClass("is-valid");
     }
   });
