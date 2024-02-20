@@ -255,7 +255,7 @@ function validInput(formInputId) {
 /**
  * Listen for the event that the firstName input is unfocused and display an error message or accept the input based on whether it's valid or not
  */
-$("#firstName").blur((e) => {
+$("#firstName").on("input", function() {
   // Check if input is a valid length
   if($("#firstName").val().length < minimumLength) {
     invalidInput("#firstName", "<center>First name must be greater than 2 characters</center>");
@@ -269,7 +269,7 @@ $("#firstName").blur((e) => {
 /**
  * Listen for the event that the lastName input is unfocused and display an error message or accept the input based on whether it's valid or not
  */
-$("#lastName").blur((e) => {
+$("#lastName").on("input", function() {
   // Check if input is a valid length
   if($("#lastName").val().length < minimumLength) {
     invalidInput("#lastName", "<center>Last name must be greater than 2 characters</center>");
