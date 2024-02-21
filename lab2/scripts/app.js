@@ -37,7 +37,7 @@ class User {
   displayUser() {
     console.log(`First Name: ${this.firstName}`);
     console.log(`Last Name: ${this.lastName}`);
-    console.log(`Username: ${this.username}`);
+    //console.log(`Username: ${this.username}`);
     console.log(`Email: ${this.email}`);
     console.log(`Password ${this.password}`);
   };
@@ -289,6 +289,12 @@ $("#lastName").on("input", function() {
 function clearForm() {
   $("#registerForm")[0].reset();
   $("#errorMessage").hide();
+  $('#firstName').removeClass('is-valid');
+  $('#lastName').removeClass('is-valid');
+  $('#email').removeClass('is-valid');
+  $('#password').removeClass('is-valid');
+  $('#confirmPassword').removeClass('is-valid')
+
 }
 
 // Wait until page is fully loaded
