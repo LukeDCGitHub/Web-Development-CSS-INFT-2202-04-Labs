@@ -5,7 +5,10 @@
 */
 
 // Create minimumLength constant for user inputs
-const minimumLength = 2;
+const nameMinimumLength = 2;
+const emailMinimumLength = 8;
+const passwordMinimumLength = 6;
+const validInputsLength = 5;
 
 /**
  * Create User class this will hold user information and represent a users details
@@ -206,7 +209,7 @@ $("#registerForm").submit((e) => {
   let validInputs = document.getElementsByClassName("is-valid");
 
   // If the number of inputs with the is-valid class is 5 then the form is valid
-  if(validInputs.length == 5) {
+  if(validInputs.length == validInputsLength) {
     
     // Hide any error messages
     $("#errorMessage").hide();
@@ -257,7 +260,7 @@ function validInput(formInputId) {
  */
 $("#firstName").on("input", function() {
   // Check if input is a valid length
-  if($("#firstName").val().length < minimumLength) {
+  if($("#firstName").val().length < nameMinimumLength) {
     invalidInput("#firstName", "<center>First name must be greater than 2 characters</center>");
   }
   // Else the length is valid
@@ -271,7 +274,7 @@ $("#firstName").on("input", function() {
  */
 $("#lastName").on("input", function() {
   // Check if input is a valid length
-  if($("#lastName").val().length < minimumLength) {
+  if($("#lastName").val().length < nameMinimumLength) {
     invalidInput("#lastName", "<center>Last name must be greater than 2 characters</center>");
   }
   // Else the length is valid
@@ -319,12 +322,14 @@ $(document).ready(function() {
 
     // If email is not valid
     if (!validateEmail(email)) {
-
-        // Set email to invalid and display error message
-        invalidInput("#email", "<center>Email must be at least 8 characters long and contain an @ symbol.</center>");
-
+      // Set email to invalid and display error message
+      invalidInput("#email", "<center>Email must contain proper format.</center>");
+        }
+    else if (email.length < emailMinimumLength){
+      invalidInput("#email", "<center>Email must be at least 8 characters long.");
+    }
       // If email data is valid
-    } else {
+    else {
         // Hide error message if email is valid
         validInput("#email")
     }
@@ -346,7 +351,7 @@ $(document).ready(function() {
       var confirmPassword = $("#confirmPassword").val();
 
       // If password lenght is invalid
-      if (password.length < 6) {
+      if (password.length < passwordMinimumLength) {
 
           // Set password to invalid and display error message
           invalidInput("#password", "<center>Password must be at least 6 characters long.</center>");
@@ -383,7 +388,7 @@ $(document).ready(function() {
       var confirmPassword = $(this).val();
 
       // If the confirm password length is valid
-      if (confirmPassword.length < 6) {
+      if (confirmPassword.length < passwordMinimumLength) {
 
           // Set confirm password to invalid and display error message
           invalidInput("#confirmPassword", "<center>Password must be at least 6 characters long.</center>");
