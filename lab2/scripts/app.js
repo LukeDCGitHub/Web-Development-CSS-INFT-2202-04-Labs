@@ -9,6 +9,7 @@ const nameMinimumLength = 2;
 const emailMinimumLength = 8;
 const passwordMinimumLength = 6;
 const validInputsLength = 5;
+const zero = 0;
 
 /**
  * Create User class this will hold user information and represent a users details
@@ -19,14 +20,12 @@ class User {
    * Constructor that sets all User proterties
    * @param {*} firstName 
    * @param {*} lastName 
-   * @param {*} username 
    * @param {*} email 
    * @param {*} password 
    */
-  constructor(firstName, lastName, username, email, password) {
+  constructor(firstName, lastName, email, password) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.username = username;
     this.email = email;
     this.password = password;
   }
@@ -37,7 +36,6 @@ class User {
   displayUser() {
     console.log(`First Name: ${this.firstName}`);
     console.log(`Last Name: ${this.lastName}`);
-    //console.log(`Username: ${this.username}`);
     console.log(`Email: ${this.email}`);
     console.log(`Password ${this.password}`);
   };
@@ -176,7 +174,7 @@ function submitLogin() {
   let password = $("#loginPassword").val();
 
   // Check if username is already in navbar
-  if($("#usernameNavigation").length != 0) {
+  if($("#usernameNavigation").length != zero) {
     // Remove the old username form navbar
     $("#usernameNavigation").remove();
     // Create session variable storing the users username
@@ -184,7 +182,7 @@ function submitLogin() {
   }
 
   // Check if the length of the entered data is greater than 0
-  else if(username.length > 0 && password.length > 0) {
+  else if(username.length > zero && password.length > zero) {
     // Create session variable storing the users username
     sessionStorage.setItem("username", username);
   }  
@@ -215,7 +213,7 @@ $("#registerForm").submit((e) => {
     $("#errorMessage").hide();
     
     // Create new user using the data entered by the user
-    let user = new User($("#firstName").val(), $("#lastName").val(), $("#username").val(), $("#email").val(), $("#password").val());
+    let user = new User($("#firstName").val(), $("#lastName").val(), $("#email").val(), $("#password").val());
     
     // Display the user information to the console
     user.displayUser();
@@ -261,7 +259,7 @@ function validInput(formInputId) {
 $("#firstName").on("input", function() {
   // Check if input is a valid length
   if($("#firstName").val().length < nameMinimumLength) {
-    invalidInput("#firstName", "<center>First name must be greater than 2 characters</center>");
+    invalidInput("#firstName", "<center>First name must be at least 2 characters</center>");
   }
   // Else the length is valid
   else {
@@ -275,7 +273,7 @@ $("#firstName").on("input", function() {
 $("#lastName").on("input", function() {
   // Check if input is a valid length
   if($("#lastName").val().length < nameMinimumLength) {
-    invalidInput("#lastName", "<center>Last name must be greater than 2 characters</center>");
+    invalidInput("#lastName", "<center>Last name must be at least 2 characters</center>");
   }
   // Else the length is valid
   else {
