@@ -482,6 +482,10 @@
      */
     function DisplayTaskList()
     {
+
+        // Keep out keep out users that are not logged in
+        authGuard();
+
         let messageArea = $("#messageArea");
         messageArea.hide();
         let taskInput = $("#taskTextInput");
