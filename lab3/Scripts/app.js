@@ -1,3 +1,10 @@
+/*
+  Names: Luke McMann, Blake Munro
+  Student ID: 100893644, 100883548
+  Date finished: 2024-03-12
+*/
+
+
 /* custom JavaScript goes here */
 
 //IIFE - Immediately Invoked Function Expression
@@ -401,13 +408,14 @@
         <a id="contact-list" class="nav-link" aria-current="page"><i class="fas fa-users fa-lg"></i> Contact List</a>
         </li>`).insertBefore("#loginListItem");
 
+        // Add the task-list link to the navbar
         $(`<li class="nav-item">
         <a id="task-list" class="nav-link" aria-current="page"><i class="fas fa-clipboard fa-lg"></i> Task List</a>
         </li>`).insertBefore("#loginListItem");
       }
       else
       {
-        // swap out the login link for logout
+        // swap out the logout link for login
         $("#loginListItem").html(
           `<a id="login" class="nav-link" aria-current="page"><i class="fas fa-sign-in-alt"></i> Login</a>`
           );
@@ -442,6 +450,7 @@
         case "login": return displayLogin;
         case "register": return displayRegister;
         case "404": return display404;
+        // Add the task-list callback function
         case "task-list": return DisplayTaskList;
         default:
           console.error("ERROR: callback does not exist: " + activeLink);
@@ -488,7 +497,7 @@
     function DisplayTaskList()
     {
 
-        // Keep out keep out users that are not logged in
+        // Keep out users that are not logged in
         authGuard();
 
         let messageArea = $("#messageArea");

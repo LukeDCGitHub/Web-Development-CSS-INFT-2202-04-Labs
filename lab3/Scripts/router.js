@@ -1,3 +1,9 @@
+/*
+  Names: Luke McMann, Blake Munro
+  Student ID: 100893644, 100883548
+  Date finished: 2024-02-20
+*/
+
 "use strict";
 
 (function (core) {
@@ -97,6 +103,7 @@ router.AddTable(["/",
                  "/register", 
                  "/login", 
                  "/edit",
+                 // Add task-list to the router table
                 "/task-list"]);
                 
 let route = location.pathname; // alias for location.pathname
