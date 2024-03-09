@@ -399,7 +399,11 @@
        
         $(`<li class="nav-item">
         <a id="contact-list" class="nav-link" aria-current="page"><i class="fas fa-users fa-lg"></i> Contact List</a>
-      </li>`).insertBefore("#loginListItem");
+        </li>`).insertBefore("#loginListItem");
+
+        $(`<li class="nav-item">
+        <a id="task-list" class="nav-link" aria-current="page"><i class="fas fa-clipboard fa-lg"></i> Task List</a>
+        </li>`).insertBefore("#loginListItem");
       }
       else
       {
@@ -438,6 +442,7 @@
         case "login": return displayLogin;
         case "register": return displayRegister;
         case "404": return display404;
+        case "task-list": return DisplayTaskList;
         default:
           console.error("ERROR: callback does not exist: " + activeLink);
           break;
