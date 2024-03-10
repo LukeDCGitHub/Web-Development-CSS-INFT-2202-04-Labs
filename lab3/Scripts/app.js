@@ -6,7 +6,9 @@
 
 
 /* custom JavaScript goes here */
-
+// if(document.URL.includes("contact-list.html") || document.URL.includes("task-list.html")) {
+//   location.href = "../../";
+// }
 //IIFE - Immediately Invoked Function Expression
 //AKA - Anonymous Self-Executing Function
 //Closure - limits scope leak
@@ -70,6 +72,9 @@
       
     }
 
+    /**
+     * Load footer on each page
+     */
     function loadFooter()
     {
       // inject the Footer
@@ -79,6 +84,9 @@
       });
     }
 
+    /**
+     * Display content on the home page
+     */
     function displayHome()
     {
       // Add content to index.html
@@ -86,6 +94,9 @@
       document.getElementById("indexWelcome").textContent = "Welcome to Fake Company's Website!";
     }
 
+    /**
+     * Display content on the about page
+     */
     function displayAbout()
     {
         // Add content to about.html
@@ -96,6 +107,9 @@
         document.getElementById("blakeAbout").innerHTML = "Blake is our project manager. He's good at making our jobs difficult. He knows very little about programming so<br/> we're not sure why he works for us. Infact he doesn't know much of anything really. He does bring us tootsie rolls on tuesdays,<br/> so I guess he's useful for something. Here's his <a href='https://www.linkedin.com/in/blakemunro/'>LinkedIn</a>. It might show something he's good at.";
     }
 
+    /**
+     * Display content on the projects page
+     */
     function displayProjects()
     {
       // Add content to projects.html
@@ -109,6 +123,9 @@
 
     }
 
+    /**
+     * Display content on the services page
+     */
     function displayServices()
     {
       // Add content to services.html
@@ -358,7 +375,9 @@
           messageArea.removeAttr("class").hide();
 
           // redirect user to secure area - contact-list.html
-          location.href = "/contact-list";
+          loadHeader("contact-list");
+          loadContent("contact-list", ActiveLinkCallBack("contact-list"));
+          loadFooter();
         }
         else
         {
@@ -418,7 +437,9 @@
           sessionStorage.clear();
 
           // redirect back to login
-          location.href = "/login";
+          loadHeader("login");
+          loadContent("login", ActiveLinkCallBack("login"));
+          loadFooter();
         });
 
         // make it look like each nav item is an active link
