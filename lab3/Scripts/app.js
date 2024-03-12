@@ -476,10 +476,10 @@
     {
       if(!sessionStorage.getItem("user"))
       {
-      // redirect back to login page
-      loadHeader("login");
-          loadContent("login", ActiveLinkCallBack("login"));
-          loadFooter();
+        // redirect back to login page
+        loadHeader("login");
+        loadContent("login", ActiveLinkCallBack("login"));
+        loadFooter();
       }
     }
 
