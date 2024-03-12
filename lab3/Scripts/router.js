@@ -103,7 +103,6 @@ router.AddTable(["/",
                  "/register", 
                  "/login", 
                  "/edit",
-                 "/logout",
                  // Add task-list to the router table
                 "/task-list"]);
                 

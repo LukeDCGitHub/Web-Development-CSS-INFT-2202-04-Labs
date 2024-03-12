@@ -24,7 +24,8 @@
      */
     function loadHeader(pageName)
     {
-      // inject the Header
+      if (pageName != "logout"){
+              // inject the Header
       $.get("./Views/components/header.html", function(data)
       {
         $("header").html(data); // load the navigation bar
@@ -51,6 +52,7 @@
           $(this).css('cursor', 'pointer');
         });
       });
+      }
     }
 
     /**
@@ -62,13 +64,16 @@
      */
     function loadContent(pageName, callback)
     {
-      // inject content
+      if (pageName != "logout"){
+              // inject content
       $.get(`./Views/content/${pageName}.html`, function(data)
       {
         $("main").html(data);
 
         callback();
       });
+      }
+
       
     }
 
@@ -82,6 +87,7 @@
       {
         $("footer").html(data);
       });
+
     }
 
     /**
@@ -443,7 +449,7 @@
         });
 
         // make it look like each nav item is an active link
-        $("#logout").on("mouseover", function()
+        $("#login").on("mouseover", function()
         {
           $(this).css('cursor', 'pointer');
         });
@@ -478,11 +484,6 @@
     }
 
     function display404()
-    {
-
-    }
-
-    function displayLogout()
     {
 
     }
