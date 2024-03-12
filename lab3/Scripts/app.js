@@ -471,11 +471,18 @@
       if(!sessionStorage.getItem("user"))
       {
       // redirect back to login page
-      location.href = "/login";
+      loadHeader("login");
+          loadContent("login", ActiveLinkCallBack("login"));
+          loadFooter();
       }
     }
 
     function display404()
+    {
+
+    }
+
+    function displayLogout()
     {
 
     }
@@ -496,6 +503,7 @@
         case "404": return display404;
         // Add the task-list callback function
         case "task-list": return DisplayTaskList;
+        case "logout": return display404;
         default:
           console.error("ERROR: callback does not exist: " + activeLink);
           break;
