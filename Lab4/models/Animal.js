@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 // Connect to database
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/Lab4');
+mongoose.connect(process.env.MONGO_DB_URL);
 
 // Create schema variable
 let Schema = mongoose.Schema;
