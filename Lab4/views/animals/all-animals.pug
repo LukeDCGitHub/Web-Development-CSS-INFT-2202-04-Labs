@@ -1,0 +1,23 @@
+extends ../index
+block content
+    table.table
+        tr.table-dark 
+            th Zoo
+            th Scientific Name 
+            th Common Name 
+            th Given Name 
+            th Gender 
+            th Date of Birth 
+            th Age 
+            th Transportable
+
+        each animal in animals  
+            tr 
+                td=animal.zoo 
+                td=animal.scientificName 
+                td=animal.commonName 
+                td=animal.givenName 
+                td=animal.gender 
+                td=animal.dateOfBirth 
+                td=animal.age 
+                td=animal.isTransportable

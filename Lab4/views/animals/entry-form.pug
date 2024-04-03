@@ -1,0 +1,36 @@
+extends ../index
+block content
+    .d-flex.align-items-center.justify-content-center
+        form 
+            .mb-3 
+                label(for="homeZoo", class="form-label") Home Zoo 
+                input(type="text", class="form-control", id="homeZoo")
+                label(for="scientificName", class="form-label") Scientific Name
+                input(type="text", class="form-control", id="scientificName")
+                label(for="commonName", class="form-label") Common Name
+                input(type="text", class="form-control", id="commonName")
+                label(for="givenName", class="form-label") Given Name
+                input(type="text", class="form-control", id="givenName")
+                p Gender
+                label(for="male", class="form-label") Male 
+                input(type="radio" id="male" name="gender")
+                ="    "
+                label(for="female", class="form-label") Female
+                input(type="radio" id="female" name="gender")
+                p Date of Birth
+                input(type="date" id="birthDate")
+                br
+                label(for="age", class="form-label") Age
+                input(type="text", class="form-control", id="age")
+                p Is Transportable
+                label(for="available", class="form-label") Available
+                input(type="radio" id="available" name="transportable" value="Available")
+                ="    "
+                label(for="unavailable", class="form-label") Unavailable
+                input(type="radio" id="unavailable" name="transportable" value="Unavailable")
+            div 
+                button(type="submit", class="btn btn-primary") Submit 
+                ="    "
+                button(type="reset", class="btn btn-primary") Reset 
+
+        
