@@ -46,15 +46,6 @@ function allAnimalView(req, res) {
 }
 
 /**
- * Display edit-animal page
- * @param {*} req 
- * @param {*} res 
- */
-function editAnimalView(req, res) {
-    loadEditAnimalData(req, res);
-}
-
-/**
  * Display entry-form page
  * @param {*} req 
  * @param {*} res 
@@ -90,7 +81,9 @@ function submitAnimalForm(req, res) {
     newAnimal.save()
         .then(() => {
             console.log('Animal data saved:', newAnimal);
-            res.redirect('/all-animals'); // Redirect to all animals page after submission
+
+            // Redirect to all animals page after submission
+            res.redirect('/all-animals');
         })
         .catch(err => {
             console.error(err);
@@ -98,10 +91,96 @@ function submitAnimalForm(req, res) {
         });
 }
 
+/**
+ * Load edit animal page data
+ * @param {*} req 
+ * @param {*} res 
+ */
+function loadEditAnimalData(req, res) {
+    const animalId = req.body.id;
+    console.log("Received animalId:", animalId);
+    
+    // Find an animal by id and pass it to the page
+    animalModel.Animal.findById(animalId)
+        .then(animal => {
+            if (!animal) {
+                return res.status(404).send('Animal not found');
+            }
+
+            res.render('./animals/edit-animal', {
+                pageTitle: 'Edit Animal',
+                animal: animal
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('Error fetching animal data');
+        });
+}
+
+/**
+ * Update animal data
+ * @param {*} req 
+ * @param {*} res 
+ */
+function updateAnimal(req, res) {
+    // Create an animal using data passed from form
+    const animalId = req.body._id;
+    const updatedAnimal = {
+        zoo: req.body.zoo,
+        scientificName: req.body.scientificName,
+        commonName: req.body.commonName,
+        givenName: req.body.givenName,
+        gender: req.body.gender,
+        dateOfBirth: req.body.dateOfBirth,
+        age: req.body.age,
+        isTransportable: req.body.isTransportable === 'true', // Convert to boolean
+    };
+
+    // Find the animal by id and update it with the new animal 
+    animalModel.Animal.findByIdAndUpdate(animalId, updatedAnimal, { new: true })
+        .then((updatedDoc) => {
+            if (!updatedDoc) {
+                return res.status(404).send('Animal not found');
+            }
+            console.log('Updated animal:', updatedDoc);
+            res.redirect('/all-animals');
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error updating animal');
+        });
+}
+
+/**
+ * Delete animal data
+ * @param {*} req 
+ * @param {*} res 
+ */
+function deleteAnimal(req, res) {
+    const animalId = req.body._id;
+
+    // Delete the animal from the database
+    animalModel.Animal.findByIdAndDelete(id)
+        .then(() => {
+            console.log("Deleted animal with ID:", animalId);
+
+            // Redirect to all animals page after delete
+            res.redirect('/all-animals');
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error deleting animal');
+        });
+}
+
+
 // Export views
 module.exports = {
     allAnimalView,
-    editAnimalView,
     entryFormView,
-    submitAnimalForm
+    submitAnimalForm,
+    loadEditAnimalData,
+    updateAnimal,
+    deleteAnimal
 }

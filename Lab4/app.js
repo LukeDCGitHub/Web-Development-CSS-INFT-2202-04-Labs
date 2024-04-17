@@ -8,11 +8,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const animal = require('./routes/animal.router');
 require('dotenv').config();
-
 const app = express();
 
 
-// Middleware to parse application/x-www-form-urlencoded
+// Middleware to parse form submission
+// (Passport was giving me some trouble)
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set PORT using env file or 3000 if env is not found

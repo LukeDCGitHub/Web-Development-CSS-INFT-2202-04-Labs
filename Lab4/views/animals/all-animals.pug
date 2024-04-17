@@ -1,23 +1,36 @@
 extends ../index
-block content
-    table.table
-        tr.table-dark 
-            th Zoo
-            th Scientific Name 
-            th Common Name 
-            th Given Name 
-            th Gender 
-            th Date of Birth 
-            th Age 
-            th Transportable
 
-        each animal in animals  
-            tr 
-                td=animal.zoo 
-                td=animal.scientificName 
-                td=animal.commonName 
-                td=animal.givenName 
-                td=animal.gender 
-                td=animal.dateOfBirth 
-                td=animal.age 
-                td=animal.isTransportable
+block content
+    // Table to display animals
+    table.table
+        // Table headers
+        tr.table-dark
+            th Zoo
+            th Scientific Name
+            th Common Name
+            th Given Name
+            th Gender
+            th Date of Birth
+            th Age
+            th Transportable
+            th Edit
+
+        // Loop through each animal in the 'animals' array
+        each animal in animals
+            tr
+                // Display animal data in table cells
+                td= animal.zoo
+                td= animal.scientificName
+                td= animal.commonName
+                td= animal.givenName
+                td= animal.gender
+                td= animal.dateOfBirth
+                td= animal.age
+                td= animal.isTransportable
+
+                // Edit button for each animal
+                td
+                    // Link to edit-animal page with the animal's ID
+                    form(action="/edit-animal" method="POST")
+                        input(type="hidden" name="id" value=animal._id)
+                        button(type="submit" class="btn btn-primary") Edit
