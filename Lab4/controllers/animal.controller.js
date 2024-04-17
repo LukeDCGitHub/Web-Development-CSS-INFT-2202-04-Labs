@@ -63,9 +63,45 @@ function entryFormView(req, res) {
     loadAnimalEntryForm(req, res);
 }
 
+/**
+ * Submit animal form data
+ * @param {*} req 
+ * @param {*} res 
+ */
+function submitAnimalForm(req, res) {
+    console.log(req.body);
+    const formData = req.body;
+
+    console.log('Form Data:', formData);
+
+    // Create a new Animal document
+    const newAnimal = new animalModel.Animal({
+        zoo: formData.zoo,
+        scientificName: formData.scientificName,
+        commonName: formData.commonName,
+        givenName: formData.givenName,
+        gender: formData.gender,
+        dateOfBirth: formData.dateOfBirth,
+        age: formData.age,
+        isTransportable: formData.isTransportable === 'Available'
+    });
+
+    // Save the newAnimal to the database
+    newAnimal.save()
+        .then(() => {
+            console.log('Animal data saved:', newAnimal);
+            res.redirect('/all-animals'); // Redirect to all animals page after submission
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('Error saving data to database');
+        });
+}
+
 // Export views
 module.exports = {
     allAnimalView,
     editAnimalView,
-    entryFormView
+    entryFormView,
+    submitAnimalForm
 }
